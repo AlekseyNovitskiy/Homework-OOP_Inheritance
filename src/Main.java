@@ -17,11 +17,11 @@ public class Main {
         // ООП. Урок 4
         System.out.println("ООП. Урок 4 Задание 1");
 
-        Car lada = new Car("Lada", "Granta", 1.7);
-        Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0);
-        Car bmw = new Car("BMW", "Z8", 3.0);
-        Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4);
-        Car hyundai = new Car("Hyundai", "Avante", 1.6);
+        Car lada = new Car("Lada", "Granta", 1.7, Car.TypeCommand.SEDAN);
+        Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0, Car.TypeCommand.COUPE);
+        Car bmw = new Car("BMW", "Z8", 3.0, Car.TypeCommand.CROSSOVER);
+        Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4, Car.TypeCommand.SEDAN);
+        Car hyundai = new Car("Hyundai", "Avante", 1.6, Car.TypeCommand.SEDAN);
 
         System.out.println(lada);
         System.out.println(audi);
@@ -43,15 +43,14 @@ public class Main {
         hyundai.startMovement();
         hyundai.stopMovement();
         hyundai.pitStop();
-        //lada.refill();
 
 
         System.out.println("Автобусы");
 
-        Bus kia1 = new Bus("Kia", "Granbird", 9.5);
-        Bus yutong = new Bus("Yutong ", "ZK6122H9", 8.9);
-        Bus ankai = new Bus("ANKAI ", "GK39", 6.5);
-        Bus mercedes = new Bus("Mercedes-Benz", "Tourismo", 14);
+        Bus kia1 = new Bus("Kia", "Granbird", 9.5, Bus.TypeOfCapacity.BIG);
+        Bus yutong = new Bus("Yutong ", "ZK6122H9", 8.9, Bus.TypeOfCapacity.AVERAGE);
+        Bus ankai = new Bus("ANKAI ", "GK39", 6.5, Bus.TypeOfCapacity.SMALL);
+        Bus mercedes = new Bus("Mercedes-Benz", "Tourismo", 14, Bus.TypeOfCapacity.ESPECIALLY_BIG);
 
         System.out.println(kia1);
         System.out.println(yutong);
@@ -74,10 +73,10 @@ public class Main {
 
         System.out.println("Грузовые");
 
-        Cargo faw  = new Cargo("FAW", "J6 CA3250", 11.1);
-        Cargo iveco = new Cargo("IVECO", "Stralis", 15.7);
-        Cargo man = new Cargo("MAN", "TGS", 10.5);
-        Cargo international = new Cargo("International", "4000 Series", 7.6);
+        Cargo faw  = new Cargo("FAW", "J6 CA3250", 11.1, Cargo.LoadCapacity.N1);
+        Cargo iveco = new Cargo("IVECO", "Stralis", 15.7, Cargo.LoadCapacity.N2);
+        Cargo man = new Cargo("MAN", "TGS", 10.5, Cargo.LoadCapacity.N3);
+        Cargo international = new Cargo("International", "4000 Series", 7.6, Cargo.LoadCapacity.N2);
 
 
         System.out.println(faw);
@@ -110,6 +109,11 @@ public class Main {
         categoryB.startMovement();
         categoryB.refill();
         categoryB.stopMovement();
+        audi.printType();
+        faw.printType();
+        ankai.printType();
+
+
 
 
 
