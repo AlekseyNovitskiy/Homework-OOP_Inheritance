@@ -2,9 +2,9 @@ package transport;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Bus extends Transport implements Competing{
+public class Cargo extends Transport implements Competing {
 
-    public Bus(String brand, String model, double engineVolume) {
+    public Cargo(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
     }
 
@@ -18,19 +18,10 @@ public class Bus extends Transport implements Competing{
         System.out.println("Финиш "+getBrand()+" "+getModel()+", объем двигателя — " + getEngineVolume() + " л.");
 
     }
-    /*
-
-    @Override
-    public void refill() {
-        System.out.println("Можно заправлять бензином или дизелем на заправке.");
-    }
-
-     */
 
     public String toString() {
-        return "Автобус " + getBrand() + " " + getModel() + ", объем двигателя — " + getEngineVolume() + " л.";
+        return getBrand() + " " + getModel() + ", объем двигателя — " + getEngineVolume() + " л.";
     }
-
 
     @Override
     public void pitStop() {

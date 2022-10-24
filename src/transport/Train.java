@@ -7,6 +7,22 @@ public class Train extends Transport {
     private String finalStop;  //Конечная остановка
     private int numberOfWagons;  //Количество вагонов
 
+    public Train(String brand, String model, double engineVolume) {
+        super(brand, model, engineVolume);
+    }
+
+    @Override
+    public void startMovement() {
+
+    }
+
+    @Override
+    public void stopMovement() {
+
+    }
+
+
+    /*
 
     public Train(String brand, String model, int productionYear, String productionCountry, int maximumSpeed,
                  String departureStation,String finalStop,float theCostOfTheTrip,int numberOfWagons) {
@@ -17,6 +33,7 @@ public class Train extends Transport {
         setFinalStop(finalStop);
         setNumberOfWagons(numberOfWagons);
     }
+
     public String toString() {
         return "Поезд " + getBrand() + ", модель " + getModel() + ", год выпуска — " + getProductionYear()
                 + ", сборка в " + getProductionCountry() + " скорость передвижения "+ getMaximumSpeed()+" км/ч,"
@@ -89,4 +106,6 @@ public class Train extends Transport {
     public void refill() {
         System.out.println("Нужно заправлять дизелем.");
     }
+
+     */
 }

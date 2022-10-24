@@ -3,12 +3,16 @@ package transport;
 public abstract class Transport {
     private final String brand;
     private final String model;
+    private final double engineVolume;
+    /*
     private final int productionYear;
     private final String productionCountry;
     private String color;
     private int maximumSpeed;
 
-    public Transport(String brand, String model, int productionYear, String productionCountry, int maximumSpeed) {
+     */
+
+    public Transport(String brand, String model,double engineVolume) {
         if (brand == null || brand.isBlank()) {
             this.brand = "default";
         } else {
@@ -19,6 +23,13 @@ public abstract class Transport {
         } else {
             this.model = model;
         }
+        if (Double.compare(engineVolume, 0) == 0) {
+            this.engineVolume = 1.5;
+        } else {
+            this.engineVolume = engineVolume;
+        }
+
+        /*
         if (productionYear == 0) {
             this.productionYear = 2000;
         } else {
@@ -30,7 +41,25 @@ public abstract class Transport {
             this.productionCountry = productionCountry;
         }
         setMaximumSpeed(maximumSpeed);
+
+         */
     }
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+    public double getEngineVolume() {
+        return engineVolume;
+    }
+
+    public abstract void startMovement();
+    public abstract void stopMovement();
+
+
+    /*
 
     public Transport(String brand, String model, int productionYear, String productionCountry,
                      String color, int maximumSpeed) {
@@ -58,14 +87,10 @@ public abstract class Transport {
         setMaximumSpeed(maximumSpeed);
     }
 
-    public String getBrand() {
-        return brand;
-    }
+     */
 
-    public String getModel() {
-        return model;
-    }
 
+    /*
     public int getProductionYear() {
         return productionYear;
     }
@@ -99,4 +124,8 @@ public abstract class Transport {
     }
 
     public abstract void refill();
+
+     */
 }
+
+

@@ -1,13 +1,135 @@
 import Animal.*;
+import Driver.CategoryB;
+import Driver.CategoryC;
+import Driver.CategoryD;
+import org.w3c.dom.ls.LSOutput;
 import transport.Bus;
 import transport.Car;
+import transport.Cargo;
 import transport.Train;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
+
     public static void main(String[] args) {
+        // ООП. Урок 4
+        System.out.println("ООП. Урок 4 Задание 1");
+
+        Car lada = new Car("Lada", "Granta", 1.7);
+        Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0);
+        Car bmw = new Car("BMW", "Z8", 3.0);
+        Car kia = new Car("Kia", "Sportage 4-го поколения", 2.4);
+        Car hyundai = new Car("Hyundai", "Avante", 1.6);
+
+        System.out.println(lada);
+        System.out.println(audi);
+        System.out.println(bmw);
+        System.out.println(kia);
+        System.out.println(hyundai);
+        lada.startMovement();
+        lada.stopMovement();
+        lada.pitStop();
+        audi.startMovement();
+        audi.stopMovement();
+        audi.pitStop();
+        bmw.startMovement();
+        bmw.stopMovement();
+        bmw.pitStop();
+        kia.startMovement();
+        kia.stopMovement();
+        kia.pitStop();
+        hyundai.startMovement();
+        hyundai.stopMovement();
+        hyundai.pitStop();
+        //lada.refill();
+
+
+        System.out.println("Автобусы");
+
+        Bus kia1 = new Bus("Kia", "Granbird", 9.5);
+        Bus yutong = new Bus("Yutong ", "ZK6122H9", 8.9);
+        Bus ankai = new Bus("ANKAI ", "GK39", 6.5);
+        Bus mercedes = new Bus("Mercedes-Benz", "Tourismo", 14);
+
+        System.out.println(kia1);
+        System.out.println(yutong);
+        System.out.println(ankai);
+        System.out.println(mercedes);
+        kia1.startMovement();
+        kia1.stopMovement();
+        kia1.startMovement();
+        kia1.stopMovement();
+        kia1.pitStop();
+        yutong.startMovement();
+        yutong.stopMovement();
+        yutong.pitStop();
+        ankai.startMovement();
+        ankai.stopMovement();
+        ankai.pitStop();
+        mercedes.startMovement();
+        mercedes.stopMovement();
+        mercedes.pitStop();
+
+        System.out.println("Грузовые");
+
+        Cargo faw  = new Cargo("FAW", "J6 CA3250", 11.1);
+        Cargo iveco = new Cargo("IVECO", "Stralis", 15.7);
+        Cargo man = new Cargo("MAN", "TGS", 10.5);
+        Cargo international = new Cargo("International", "4000 Series", 7.6);
+
+
+        System.out.println(faw);
+        System.out.println(iveco);
+        System.out.println(man);
+        System.out.println(international);
+        faw.startMovement();
+        faw.stopMovement();
+        faw.startMovement();
+        faw.stopMovement();
+        faw.pitStop();
+        iveco.startMovement();
+        iveco.stopMovement();
+        iveco.pitStop();
+        man.startMovement();
+        man.stopMovement();
+        man.pitStop();
+        international.startMovement();
+        international.stopMovement();
+        international.pitStop();
+
+        CategoryB categoryB = new CategoryB("Иванов И.И.", 6, lada);
+        System.out.println(categoryB);
+        CategoryC categoryC = new CategoryC("Николай И.Т.", 15, faw);
+        System.out.println(categoryC);
+        CategoryD categoryD = new CategoryD("Максим Н.И.", 15, ankai);
+        System.out.println(categoryD);
+
+
+        categoryB.startMovement();
+        categoryB.refill();
+        categoryB.stopMovement();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
         // ООП. Урок 3
         System.out.println("ООП. Урок 3 Задание 1.1");
 
@@ -38,6 +160,9 @@ public class Main {
         System.out.println(bmw);
         System.out.println(kia);
         System.out.println(hyundai);
+
+
+
 
         // ООП. Урок 3
         System.out.println("ООП. Урок 3 Задание 1.2");
@@ -240,6 +365,8 @@ public class Main {
         falcon.sleep();
         if(!falcon.checkFlying(listFlying))
             listFlying.add(falcon);
+
+         */
 
     }
 
