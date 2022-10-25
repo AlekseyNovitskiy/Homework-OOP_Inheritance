@@ -72,4 +72,9 @@ public class Cargo extends Transport implements Competing {
             System.out.println("Тип грузоподъемности авто: " + from+ to);
         }
     }
+
+    @Override
+    public boolean service() {
+        return Math.random()>0.75;
+    }
 }

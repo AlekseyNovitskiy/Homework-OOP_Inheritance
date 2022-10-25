@@ -6,13 +6,13 @@ public abstract class Driver< T extends Transport> {
 
 
     public final String fullName;
-    public final String category;
+    private String category;
     public int drivingExperience;
-    public final T car;
+    public T car;
 
-    public Driver(String fullName, String category, int drivingExperience, T car) {
+    public Driver(String fullName, String category, int drivingExperience, T car) throws IllegalAccessException {
         this.fullName = fullName;
-        this.category = category;
+        setCategory(category);
         this.drivingExperience = drivingExperience;
         this.car = car;
     }
@@ -39,6 +39,14 @@ public abstract class Driver< T extends Transport> {
 
     public String getCategory() {
         return category;
+    }
+
+    public void setCategory(String category) {
+        if (category == null)
+        {
+            throw new IllegalArgumentException("Необходимо указать категорию прав");
+        }
+        this.category = category;
     }
 
     public int getDrivingExperience() {

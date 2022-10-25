@@ -40,7 +40,7 @@ public class Bus extends Transport implements Competing{
         System.out.println("Финиш "+getBrand()+" "+getModel()+", объем двигателя — " + getEngineVolume() + " л.");
 
     }
-
+    @Override
     public void printType() {
         if (typeOfCapacity == null) {
             System.out.println("Данных недостаточно");
@@ -49,14 +49,12 @@ public class Bus extends Transport implements Competing{
             System.out.println("Тип вместимости авто: от" + typeOfCapacity.getFrom()+" до "+ typeOfCapacity.getTo());
         }
     }
-    /*
 
     @Override
-    public void refill() {
-        System.out.println("Можно заправлять бензином или дизелем на заправке.");
+    public boolean service() {
+        System.out.println("Автобус "+getBrand()+" "+getModel()+" в диагностике не требуется");
+        return true;
     }
-
-     */
 
     public String toString() {
         return "Автобус " + getBrand() + " " + getModel() + ", объем двигателя — " + getEngineVolume() + " л.";
