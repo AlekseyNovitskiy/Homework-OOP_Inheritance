@@ -56,6 +56,11 @@ public class Bus extends Transport implements Competing{
         return true;
     }
 
+    @Override
+    public void repair() {
+        System.out.println("Автобус "+getBrand()+" "+getModel()+" починен!");
+    }
+
     public String toString() {
         return "Автобус " + getBrand() + " " + getModel() + ", объем двигателя — " + getEngineVolume() + " л.";
     }

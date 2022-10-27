@@ -1,6 +1,6 @@
 package transport;
 
-import java.sql.SQLOutput;
+
 import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -34,12 +34,14 @@ public class Car extends Transport implements Competing{
 
     @Override
     public void startMovement() {
-        System.out.println("Старт "+getBrand()+" "+getModel()+", объем двигателя — " + getEngineVolume() + " л.");
+        System.out.println("Старт "+getBrand()+" "+getModel()+", объем двигателя — "
+                + getEngineVolume() + " л.");
     }
 
     @Override
     public void stopMovement() {
-        System.out.println("Финиш "+getBrand()+" "+getModel()+", объем двигателя — " + getEngineVolume() + " л.");
+        System.out.println("Финиш "+getBrand()+" "+getModel()+", объем двигателя — "
+                + getEngineVolume() + " л.");
 
     }
 
@@ -57,6 +59,11 @@ public class Car extends Transport implements Competing{
     @Override
     public boolean service() {
         return Math.random()>0.7;
+    }
+
+    @Override
+    public void repair() {
+        System.out.println("Машина "+getBrand()+" "+getModel()+" починена!");
     }
 
     public String toString() {
