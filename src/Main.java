@@ -4,7 +4,9 @@ import Driver.CategoryD;
 import Driver.Driver;
 import transport.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class Main {
@@ -27,7 +29,7 @@ public class Main {
         Car audi = new Car("Audi", "A8 50 L TDI quattro", 3.0, Car.TypeCommand.COUPE);
         audi.addDriver(new CategoryB("Иванов И.И.", 6, audi));
         audi.addMechanic(nikolay);
-        audi.addSponsor(shell,pirelli);
+        audi.addSponsor(shell,pirelli, pirelli); //Специально сделали повтор для проверки
 
         Car bmw = new Car("BMW", "Z8", 3.0, Car.TypeCommand.CROSSOVER);
         bmw.addDriver(new CategoryB("Иванов И.И.", 6, bmw));
@@ -45,32 +47,6 @@ public class Main {
         hyundai.addMechanic(nikolay);
         hyundai.addSponsor(shell,pirelli);
 
-        /*
-        System.out.println(lada);
-        System.out.println(audi);
-        System.out.println(bmw);
-        System.out.println(kia);
-        System.out.println(hyundai);
-        lada.startMovement();
-        lada.stopMovement();
-        lada.pitStop();
-        audi.startMovement();
-        audi.stopMovement();
-        audi.pitStop();
-        bmw.startMovement();
-        bmw.stopMovement();
-        bmw.pitStop();
-        kia.startMovement();
-        kia.stopMovement();
-        kia.pitStop();
-        hyundai.startMovement();
-        hyundai.stopMovement();
-        hyundai.pitStop();
-
-         */
-
-
-      //  System.out.println("Автобусы");
 
         Bus kia1 = new Bus("Kia", "Granbird", 9.5, Bus.TypeOfCapacity.BIG);
         kia1.addDriver(new CategoryD("Максим Н.И.", 15, kia1));
@@ -92,34 +68,11 @@ public class Main {
         mercedes.addMechanic(maksim);
         mercedes.addSponsor(pirelli);
 
-        /*
-        System.out.println(kia1);
-        System.out.println(yutong);
-        System.out.println(ankai);
-        System.out.println(mercedes);
-        kia1.startMovement();
-        kia1.stopMovement();
-        kia1.startMovement();
-        kia1.stopMovement();
-        kia1.pitStop();
-        yutong.startMovement();
-        yutong.stopMovement();
-        yutong.pitStop();
-        ankai.startMovement();
-        ankai.stopMovement();
-        ankai.pitStop();
-        mercedes.startMovement();
-        mercedes.stopMovement();
-        mercedes.pitStop();
-
-         */
-
-     //   System.out.println("Грузовые");
 
         Cargo faw = new Cargo("FAW", "J6 CA3250", 11.1, Cargo.LoadCapacity.N1);
-        kia.addDriver(new CategoryC("Николай И.Т.", 15, faw));
-        kia.addMechanic(ivanov);
-        kia.addSponsor(shell);
+        faw.addDriver(new CategoryC("Николай И.Т.", 15, faw));
+        faw.addMechanic(ivanov);
+        faw.addSponsor(shell);
 
         Cargo iveco = new Cargo("IVECO", "Stralis", 15.7, Cargo.LoadCapacity.N2);
         iveco.addDriver(new CategoryC("Николай И.Т.", 15, iveco));
@@ -136,59 +89,14 @@ public class Main {
         international.addMechanic(ivanov);
         international.addSponsor(shell);
 
-        /*
-        System.out.println(faw);
-        System.out.println(iveco);
-        System.out.println(man);
-        System.out.println(international);
-        faw.startMovement();
-        faw.stopMovement();
-        faw.startMovement();
-        faw.stopMovement();
-        faw.pitStop();
-        iveco.startMovement();
-        iveco.stopMovement();
-        iveco.pitStop();
-        man.startMovement();
-        man.stopMovement();
-        man.pitStop();
-        international.startMovement();
-        international.stopMovement();
-        international.pitStop();
-
-
-
-
-        service(
-                lada, audi, bmw, kia, hyundai,
-                kia1, yutong, ankai, mercedes,
-                faw, iveco, man, international
-        );
-
-         */
-
-
-
-    //    CategoryB categoryB = new CategoryB("Иванов И.И.", 6, lada);
-    //    System.out.println(categoryB);
-    //    CategoryC categoryC = new CategoryC("Николай И.Т.", 15, faw);
-    //    System.out.println(categoryC);
-    //    CategoryD categoryD = new CategoryD("Максим Н.И.", 15, ankai);
-    //    System.out.println(categoryD);
-
-
-    //    categoryB.startMovement();
-    //    categoryB.refill();
-    //    categoryB.stopMovement();
-
-     //   audi.printType();
-     //   faw.printType();
-     //   ankai.printType();
-
+        Set<Transport>  newTransports = new HashSet<>(); //Коллекция авто без повторов
         List<Transport> transports = List.of(
-                lada, audi, bmw, kia, hyundai,
-                kia1, yutong, ankai, mercedes,
-                faw, iveco, man, international);
+            lada, audi, bmw, kia, hyundai,
+            kia1, yutong, ankai, mercedes,
+            faw, iveco, man, international, international);// Для удобного добавления авто в коллекцию Set (тут есть повторы)
+
+
+
         ServiceStation serviceStation = new ServiceStation();
         serviceStation.addCar(lada);
         serviceStation.addCar(audi);
@@ -211,15 +119,25 @@ public class Main {
         serviceStation.service();
         serviceStation.service();
 
-
-
-
-        for (Transport transport : transports) {
-            printInfo(transport);
+        for (Transport transport : transports)
+        {
+            addTransport(transport,newTransports);
         }
 
+        for (Transport transport : newTransports) {
+            printInfo(transport);
+        }
     }
 
+    public static void addTransport(Transport transport, Set<Transport> transports)
+    {
+        try {
+            transports.add(transport);
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println("Обнаружен дубликат. Будет проигнорирован");
+        }
+    }
     private static void printInfo(Transport transport) {
         System.out.println("Информация по автомобилю " + transport.getBrand() + " " + transport.getModel());
         System.out.println("Водитель: ");
@@ -236,15 +154,11 @@ public class Main {
         }
         System.out.println();
     }
-
     private static void service(Transport... transports) {
         for (Transport transport : transports) {
             serviceTransport(transport);
-
         }
-
     }
-
     private static void serviceTransport(Transport transports) {
         try {
             if (!transports.service()) {

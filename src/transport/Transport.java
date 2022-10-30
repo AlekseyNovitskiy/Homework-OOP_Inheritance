@@ -2,17 +2,16 @@ package transport;
 
 import Driver.Driver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.sql.SQLOutput;
+import java.util.*;
 
 public abstract class Transport {
     private final String brand;
     private final String model;
     private final double engineVolume;
-    private final List<Driver<?>> drivers= new ArrayList<>();
-    private final List<Mechanic<?>> mechanics= new ArrayList<>();
-    private final List<Sponsor> sponsors= new ArrayList<>();
+    private final Set<Driver> drivers = new HashSet<Driver>();
+    private final Set<Mechanic> mechanics = new HashSet<Mechanic>();
+    private final Set<Sponsor> sponsors  = new HashSet<Sponsor>();
 
 
     public  Transport(String brand, String model,double engineVolume) {
@@ -44,24 +43,51 @@ public abstract class Transport {
     }
 
     public void addDriver(Driver<?>... drivers) {
-        this.drivers.addAll(Arrays.asList(drivers));
+        for (Driver currentDriver : drivers) {
+            try {
+                this.drivers.add(currentDriver);
+            }
+            catch (IllegalArgumentException e) {
+                System.out.println("Обнаружен дубликат водителя. Будет проигноирован.");
+            }
+           // if (this.drivers.contains(currentDriver)) {
+           //     System.out.println("Обнаружен дубликат водителя. Будет проигноирован.");
+           // } else {
+          //      this.drivers.add(currentDriver);
+          //  }
+        }
     }
     public void addMechanic(Mechanic<?>... mechanics) {
-        this.mechanics.addAll(Arrays.asList(mechanics));
+        for (Mechanic currentMechanic : mechanics) {
+            try {
+                this.mechanics.add(currentMechanic);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Обнаружен дубликат механика. Будет проигноирован.");
+            }
+            // this.mechanics.addAll(Arrays.asList(mechanics));
+        }
     }
     public void addSponsor(Sponsor... sponsors) {
-        this.sponsors.addAll(Arrays.asList(sponsors));
+            for (Sponsor currentSponsor : sponsors) {
+                try {
+                    this.sponsors.add(currentSponsor);
+                }
+                catch (IllegalArgumentException e) {
+                    System.out.println("Обнаружен дубликат спонсора. Будет проигноирован.");
+                }
+        }
+        //this.sponsors.addAll(Arrays.asList(sponsors));
     }
 
-    public List<Driver<?>> getDrivers() {
+    public Set<Driver> getDrivers() {
         return drivers;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic> getMechanics() {
         return mechanics;
     }
 
-    public List<Sponsor> getSponsors() {
+    public Set<Sponsor> getSponsors() {
         return sponsors;
     }
 
